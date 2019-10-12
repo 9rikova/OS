@@ -28,7 +28,7 @@ int main()
         char c; // для считывания посимвольно
         int i = 0;
 
-        while (((read(STDIN_FILENO, &comand[i], sizeof(char))) > 0) && (comand[i] != '\n')) i++;
+        while (read(STDIN_FILENO, &comand[i], sizeof(char)) > 0 && comand[i] != '\n') i++;
 
         comand[i++] = '\0';
 
@@ -39,7 +39,7 @@ int main()
 
         waitpid(pid, NULL, 0);
 
-        while ((read(CtP[0], &c, sizeof(char))) > 0)
+        while (read(CtP[0], &c, sizeof(char)) > 0)
         {
             if (c >= 'a' && c <= 'z')
             {
