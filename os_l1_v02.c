@@ -55,14 +55,14 @@ int main()
         close(PtC[1]);
         close(CtP[0]);
         int size;
-        char comand1[SIZE_STR];
+        char comand[SIZE_STR];
         read(PtC[0], &size, sizeof(int));
-        read(PtC[0], comand1, size);
+        read(PtC[0], comand, size);
         close(PtC[0]);
         dup2(CtP[1], STDOUT_FILENO);
         dup2(CtP[1], STDERR_FILENO);
         close(CtP[1]);
-        char *argv[] = {"sh", "-c", comand1, NULL};
+        char *argv[] = {"sh", "-c", comand, NULL};
         execv("/bin/sh", argv);
     }
     else
